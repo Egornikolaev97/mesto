@@ -10,7 +10,7 @@
     line-height: 22px;
 }
 
-@media (min-width: 320px) and (max-width: 980px) {
+@media (min-width: 320px) and (max-width: 979px) {
     .footer {
         font-size: 14px;
         line-height: 17px;
