@@ -6,11 +6,16 @@
     grid-row: 1/2;
     grid-column: 2/-1;
     align-self: center;
+    background-image: url(../../../images/edit-icon.svg);
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
     .profile__edit-btn {
         width: 18px;
         height: 18px;
+        background-size: 7.5px 7.5px;
     }
 }
