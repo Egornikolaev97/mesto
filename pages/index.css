@@ -10,3 +10,10 @@
 @import url(../blocks/profile/__about/profile__about.css);
 @import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
+@import url(../blocks/photo-grid/photo-grid.css);
+@import url(../blocks/photo-grid/__image/photo-grid__image.css);
+@import url(../blocks/photo-grid/__info/photo-grid__info.css);
+@import url(../blocks/photo-grid/__item/photo-grid__item.css);
+@import url(../blocks/photo-grid/__title/photo-grid__title.css);
+@import url(../blocks/photo-grid/__like/photo-grid__like.css);
+
