@@ -1,0 +1,19 @@
+.footer {
+    color: #545454;
+    width: 880px;
+    padding-bottom: 60px;
+    margin: 0 auto;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media (min-width: 320px) and (max-width: 980px) {
+    .footer {
+        font-size: 14px;
+        line-height: 17px;
+        padding: 0 19px 36px;
+    }
+}
