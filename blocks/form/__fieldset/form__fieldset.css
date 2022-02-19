@@ -1,0 +1,16 @@
+.form__fieldset {
+    border: none;
+    /* display: flex;
+    flex-direction: column; */
+    margin: 0;
+    padding: 0;
+    width: 358px;
+    margin-bottom: 46px;
+}
+
+@media (max-width: 650px) {
+    .form__fieldset {
+        margin-bottom: 45px;
+        width: 238px;
+    }
+}
