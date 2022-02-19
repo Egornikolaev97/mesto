@@ -12,6 +12,7 @@
     background-position: center;
     font-size: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 @media (max-width: 650px) {

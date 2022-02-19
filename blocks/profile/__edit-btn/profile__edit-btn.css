@@ -10,6 +10,8 @@
     background-size: 10px 10px;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
