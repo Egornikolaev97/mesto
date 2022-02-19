@@ -1,7 +1,7 @@
 let editProfile = document.querySelector('.profile__edit-btn');
 let popup = document.querySelector('.popup');
 let closePopup = document.querySelector('.popup__close');
-let sumbit = document.querySelector('form__submit')
+let sumbit = document.querySelector('form__submit');
 
 editProfile.addEventListener('click', function() {
     popup.classList.add('popup_opened');
@@ -9,8 +9,6 @@ editProfile.addEventListener('click', function() {
 closePopup.addEventListener('click', function() {
     popup.classList.remove('popup_opened');
 });
-
-
 
 // Редактирование имени и информации о себе //
 

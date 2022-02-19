@@ -8,7 +8,14 @@
     background-size: 22px 22px;
     background-repeat: no-repeat;
     background-position: center;
+    transition: opacity .2s linear;
+    cursor: pointer;
 }
+
+.profile__add-btn:hover {
+    opacity: .6;
+}
+
 
 @media (min-width: 320px) and (max-width: 768px) {
     .profile__add-btn {
