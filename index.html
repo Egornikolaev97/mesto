@@ -19,15 +19,15 @@
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__about">Исследователь океана</p>
-                <button class="profile__edit-btn"></button>
+                <button class="profile__edit-btn" aria-label="редактировать профиль"></button>
             </div>
-            <div class="profile__add-btn"></div>
+            <div class="profile__add-btn" aria-label="добавить фотографии"></div>
         </section>
         <section aria-label="Фотографии красивых мест" class="photo-grid">
             <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Крепость на горе">
+                <img class="photo-grid__image" src="./images/altai.jpg" alt="Алтайская долина">
                 <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Карачаевск</h2>
+                    <h2 class="photo-grid__title">Altai</h2>
                     <div class="photo-grid__like"></div>
                 </div>
             </div>
@@ -46,21 +46,21 @@
                 </div>
             </div>
             <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/altai.jpg" alt="Горы Алтая">
+                <img class="photo-grid__image" src="./images/karelia.jpg" alt="Карельский пейзаж: Река, туман и лес">
                 <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Алтай</h2>
+                    <h2 class="photo-grid__title">Карелия</h2>
                     <div class="photo-grid__like"></div>
                 </div>
             </div>
             <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/dombai.jpg" alt="Скалистая вершина">
+                <img class="photo-grid__image" src="./images/baikal.jpg" alt="Замерзший байкал">
                 <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Добмай</h2>
+                    <h2 class="photo-grid__title">Байкал</h2>
                     <div class="photo-grid__like"></div>
                 </div>
             </div>
             <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Вершина Эльбруса">
+                <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Зимняя дорога до Эльбруса">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Гора Эльбрус</h2>
                     <div class="photo-grid__like"></div>
@@ -70,14 +70,14 @@
     <footer class="footer">&copy; 2022 Mesto Russia</footer>
     <div class="popup">
         <div class="popup__container">
-            <button type="button" class="popup__close">Закрыть</button>
+            <button type="button" class="popup__close" aria-label="закрыть форму">Закрыть</button>
             <form action="" class="form">
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__fieldset">
                     <input value="Жак-Ив Кусто" type="text" class="form__input form__input_name">
                     <input value="Исследователь океана" type="text" class="form__input form__input_about">
                 </fieldset>
-                <button class="form__submit">Сохранить</button>
+                <button class="form__submit" aria-label="сохранить изменения">Сохранить</button>
             </form>
         </div>
     </div>
