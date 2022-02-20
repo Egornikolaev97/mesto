@@ -13,7 +13,6 @@
     background-color: transparent;
     cursor: pointer;
     transition: opacity .2s linear;
-    display: flex;
     padding: 0;
 }
 
@@ -23,8 +22,8 @@
 
 @media (min-width: 320px) and (max-width: 768px) {
     .profile__edit-btn {
-        width: 18px;
-        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
         background-size: 7.5px 7.5px;
     }
 }
