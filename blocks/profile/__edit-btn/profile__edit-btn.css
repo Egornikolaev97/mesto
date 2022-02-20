@@ -23,6 +23,8 @@
     .profile__edit-btn {
         width: 18px;
         height: 18px;
+        min-width: 18px;
+        min-height: 18px;
         background-size: 7.5px 7.5px;
     }
 }
