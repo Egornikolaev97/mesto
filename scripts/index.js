@@ -13,8 +13,8 @@ closePopup.addEventListener('click', function() {
 // Редактирование имени и информации о себе //
 
 let formElement = document.querySelector('.form');
-let nameInput = formElement.querySelector('.form__input_name');
-let aboutInput = formElement.querySelector('.form__input_about');
+let nameInput = formElement.querySelector('.form__input_type_name');
+let aboutInput = formElement.querySelector('.form__input_type_about');
 let submit = formElement.querySelector('.form__submit');
 
 
