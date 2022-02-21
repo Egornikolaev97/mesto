@@ -2,35 +2,32 @@ let editProfile = document.querySelector('.profile__edit-btn');
 let popup = document.querySelector('.popup');
 let closePopup = document.querySelector('.popup__close');
 let sumbit = document.querySelector('form__submit');
-
-editProfile.addEventListener('click', function() {
-    popup.classList.add('popup_opened');
-});
-closePopup.addEventListener('click', function() {
-    popup.classList.remove('popup_opened');
-});
-
-// Редактирование имени и информации о себе //
-
 let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('.form__input_type_name');
 let aboutInput = formElement.querySelector('.form__input_type_about');
 let submit = formElement.querySelector('.form__submit');
-
-
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-
 let profileName = document.querySelector('.profile__name');
 let profileAbout = document.querySelector('.profile__about');
 
-profileName.textContent = nameInput.value;
-profileAbout.textContent = aboutInput.value;
+function popupOpened() {
+    popup.classList.add('popup_opened');
+    profileName.textContent = nameInput.value;
+    profileAbout.textContent = aboutInput.value;
 }
 
-submit.addEventListener('click', function() {
+function popupClose() {
     popup.classList.remove('popup_opened');
-});
+}
+
+// Редактирование имени и информации о себе //
+function formSubmitHandler(evt) {
+    evt.preventDefault();
+
+    popupOpened();
+    popup.classList.remove('popup_opened');
+}
 
 
+editProfile.addEventListener('click', popupOpened);
+closePopup.addEventListener('click', popupClose);
 formElement.addEventListener('submit', formSubmitHandler);
