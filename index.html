@@ -15,7 +15,7 @@
     </header>
     <main>
         <section class="profile">
-            <img class="profile__avatar" src="./images/avatar.jpg" alt="">
+            <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар пользователя">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__about">Исследователь океана</p>
@@ -28,55 +28,57 @@
                 <img class="photo-grid__image" src="./images/altai.jpg" alt="Алтайская долина">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Алтай</h2>
-                    <div class="photo-grid__like"></div>
+                    <button class="photo-grid__like"></button>
                 </div>
             </div>
             <div class="photo-grid__item">
                 <img class="photo-grid__image" src="./images/kamchatka.jpg" alt="Автобус на фоне заснеженных вершин">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Камчатка</h2>
-                    <div class="photo-grid__like"></div>
+                    <button class="photo-grid__like"></button>
                 </div>
             </div>
             <div class="photo-grid__item">
                 <img class="photo-grid__image" src="./images/turgoyak.jpg" alt="Озеро Тургояк с высоты птичьего полёта">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Озеро Тургояк</h2>
-                    <div class="photo-grid__like"></div>
+                    <button class="photo-grid__like"></button>
                 </div>
             </div>
             <div class="photo-grid__item">
                 <img class="photo-grid__image" src="./images/karelia.jpg" alt="Карельский пейзаж: Река, туман и лес">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Карелия</h2>
-                    <div class="photo-grid__like"></div>
+                    <button class="photo-grid__like"></button>
                 </div>
             </div>
             <div class="photo-grid__item">
                 <img class="photo-grid__image" src="./images/baikal.jpg" alt="Замерзший байкал">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Байкал</h2>
-                    <div class="photo-grid__like"></div>
+                    <button class="photo-grid__like"></button>
                 </div>
             </div>
             <div class="photo-grid__item">
                 <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Зимняя дорога до Эльбруса">
                 <div class="photo-grid__info">
                     <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                    <div class="photo-grid__like"></div>
+                    <button class="photo-grid__like"></button>
                 </div>
             </div>
         </section>
     </main>
-    <footer class="footer">&copy; 2022 Mesto Russia</footer>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
     <div class="popup">
         <div class="popup__container">
             <button type="button" class="popup__close" aria-label="закрыть форму">Закрыть</button>
-            <form class="form">
+            <form name="form" class="form">
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__fieldset">
-                    <input value="Жак-Ив Кусто" type="text" class="form__input form__input_name">
-                    <input value="Исследователь океана" type="text" class="form__input form__input_about">
+                    <input name="name" value="Жак-Ив Кусто" type="text" class="form__input form__input_type_name">
+                    <input name="about" value="Исследователь океана" type="text" class="form__input form__input_type_about">
                 </fieldset>
                 <button class="form__submit" aria-label="сохранить изменения">Сохранить</button>
             </form>
