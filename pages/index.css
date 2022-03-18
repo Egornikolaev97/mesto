@@ -18,12 +18,16 @@
 @import url(../blocks/photo-grid/__like/_active/photo-grid__like-active.css);
 @import url(../blocks/photo-grid/__title/photo-grid__title.css);
 @import url(../blocks/photo-grid/__delete/photo-grid__delete.css);
+@import url(../blocks/photo-grid/__show-btn/photo-grid__show-btn.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__fullscreen/popup__fullscreen.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__description/popup__description.css);
 @import url(../blocks/form/__fieldset/form__fieldset.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__submit/form__submit.css);

@@ -6,6 +6,7 @@ const popupAdd = document.querySelector('.popup_add');
 //popups close
 const closePopup = popupEdit.querySelector('.popup__close');
 const closePopupAdd = popupAdd.querySelector('.popup__close');
+const closePopupShow = document.querySelector('.popup__close-full');
 //popups sumbit button
 const sumbitEdit = document.querySelector('form__submit_type-edit');
 const sumbitAdd = document.querySelector('form__submit_type-add');
@@ -49,15 +50,34 @@ const initialCards = [{
 ];
 
 
-function popupEditOpen() {
-  popupEdit.classList.add('popup_opened');
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
+function popupOpen(popup) {
+  popup.classList.add('popup_opened');
 }
 
-function popupAddOpen() {
-  popupAdd.classList.add('popup_opened');
-}
+editProfile.addEventListener('click', () => {
+  nameInput.value = profileName.textContent;
+  aboutInput.value = profileAbout.textContent;
+  popupOpen(popupEdit);
+});
+
+addCards.addEventListener('click', () => {
+  popupOpen(popupAdd);
+});
+
+
+
+
+
+
+// function popupEditOpen() {
+//   popupEdit.classList.add('popup_opened');
+//   nameInput.value = profileName.textContent;
+//   aboutInput.value = profileAbout.textContent;
+// }
+
+// function popupAddOpen() {
+//   popupAdd.classList.add('popup_opened');
+// }
 
 function popupCloseEdit() {
   popupEdit.classList.remove('popup_opened');
@@ -85,8 +105,8 @@ function formSubmitHandlerAdd(evt) {
   popupCloseAdd();
 }
 
-addCards.addEventListener('click', popupAddOpen);
-editProfile.addEventListener('click', popupEditOpen);
+// addCards.addEventListener('click', popupAddOpen);
+// editProfile.addEventListener('click', popupEditOpen);
 closePopup.addEventListener('click', popupCloseEdit);
 closePopupAdd.addEventListener('click', popupCloseAdd);
 formElementEdit.addEventListener('submit', formSubmitHandlerEdit);
@@ -101,7 +121,12 @@ function addNewCard(data) {
   const cardImage = cardElement.querySelector('.photo-grid__image');
 
   const likeButton = cardElement.querySelector('.photo-grid__like');
-  const deleteButton = cardElement.querySelector('.photo-grid__delete')
+  const deleteButton = cardElement.querySelector('.photo-grid__delete');
+  const showImageButton = cardElement.querySelector('.photo-grid__show-btn');
+
+  const popupShow = document.querySelector('.popup_show');
+  const imagePopup = popupShow.querySelector('.popup__image');
+  const imageDescription = popupShow.querySelector('.popup__description');
 
   cardName.textContent = data.name;
   cardImage.src = data.link;
@@ -113,6 +138,20 @@ function addNewCard(data) {
   deleteButton.addEventListener('click', function() {
     deleteButton.closest('.photo-grid__item').remove();
   });
+
+
+  function popupShowOpen() {
+    popupShow.classList.add('popup_opened');
+    imageDescription.textContent = data.name;
+    imagePopup.src = data.link;
+  }
+
+  function popupCloseShow() {
+    popupShow.classList.remove('popup_opened');
+  }
+
+  closePopupShow.addEventListener('click', popupCloseShow);
+  showImageButton.addEventListener('click', popupShowOpen);
 
 
   return cardElement;

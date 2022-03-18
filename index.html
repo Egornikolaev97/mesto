@@ -55,9 +55,22 @@
             </form>
         </div>
     </div>
+
+
+    <div class="popup popup_show">
+        <div class="popup__fullscreen">
+            <button type="button" class="popup__close popup__close-full" aria-label="закрыть форму">Закрыть</button>
+            <img class="popup__image" src="" alt=""></button>
+            <p class="popup__description"></p>
+        </div>
+    </div>
+
+
     <template id="card-template">
         <div class="photo-grid__item">
+            <div type="button" class="photo-grid__show-btn">
             <img class="photo-grid__image" src="" alt="">
+            </div>
             <div class="photo-grid__info">
                 <h2 class="photo-grid__title"></h2>
                 <button type="button" class="photo-grid__like"></button>
@@ -67,5 +80,4 @@
     </template>
     <script src="scripts/index.js"></script>
 </body>
-
 </html>
