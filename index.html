@@ -23,67 +23,48 @@
             </div>
             <button type="button" class="profile__add-btn" aria-label="добавить фотографии"></button>
         </section>
-        <!-- <section aria-label="Фотографии красивых мест" class="photo-grid">
-            <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/altai.jpg" alt="Алтайская долина">
-                <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Алтай</h2>
-                    <button type="button" class="photo-grid__like"></button>
-                </div>
-            </div>
-            <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/kamchatka.jpg" alt="Автобус на фоне заснеженных вершин">
-                <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Камчатка</h2>
-                    <button type="button" class="photo-grid__like"></button>
-                </div>
-            </div>
-            <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/turgoyak.jpg" alt="Озеро Тургояк с высоты птичьего полёта">
-                <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Озеро Тургояк</h2>
-                    <button type="button" class="photo-grid__like"></button>
-                </div>
-            </div>
-            <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/karelia.jpg" alt="Карельский пейзаж: Река, туман и лес">
-                <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Карелия</h2>
-                    <button type="button" class="photo-grid__like"></button>
-                </div>
-            </div>
-            <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/baikal.jpg" alt="Замерзший байкал">
-                <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Байкал</h2>
-                    <button type="button" class="photo-grid__like"></button>
-                </div>
-            </div>
-            <div class="photo-grid__item">
-                <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Зимняя дорога до Эльбруса">
-                <div class="photo-grid__info">
-                    <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                    <button type="button" class="photo-grid__like"></button>
-                </div>
-            </div>
+        <section aria-label="Фотографии красивых мест" class="photo-grid">
         </section> -->
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_edit">
         <div class="popup__container">
-            <button type="button" class="popup__close" aria-label="закрыть форму">Закрыть</button>
-            <form name="profile" class="form">
+            <button type="button" class="popup__close popup__close-edit" aria-label="закрыть форму">Закрыть</button>
+            <form name="profile" class="form form_profile-edit">
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__fieldset">
-                    <input name="name" value="Жак-Ив Кусто" type="text" class="form__input form__input_type_name">
-                    <input name="about" value="Исследователь океана" type="text" class="form__input form__input_type_about">
+                    <input name="name" autocomplete="off" value="Жак-Ив Кусто" type="text" class="form__input form__input_type_name">
+                    <input name="about" autocomplete="off" value="Исследователь океана" type="text" class="form__input form__input_type_about">
                 </fieldset>
-                <button type="submit" class="form__submit" aria-label="сохранить изменения">Сохранить</button>
+                <button type="submit" class="form__submit form__submit_type-edit" aria-label="сохранить изменения">Сохранить</button>
             </form>
         </div>
     </div>
+    <div class="popup popup_add">
+        <div class="popup__container">
+            <button type="button" class="popup__close popup_close-add" aria-label="закрыть форму">Закрыть</button>
+            <form name="Cards" class="form form_cards-add">
+                <h2 class="form__title">Новое место</h2>
+                <fieldset class="form__fieldset">
+                    <input name="name" autocomplete="off" placeholder="Название" type="text" class="form__input form__input_type_title">
+                    <input name="about"autocomplete="off" placeholder="Ссылка на картинку" type="text" class="form__input form__input_type_link">
+                </fieldset>
+                <button type="submit" class="form__submit form__submit_type-add" aria-label="сохранить изменения">Создать</button>
+            </form>
+        </div>
+    </div>
+    <template id="card-template">
+        <div class="photo-grid__item">
+            <img class="photo-grid__image" src="" alt="">
+            <div class="photo-grid__info">
+                <h2 class="photo-grid__title"></h2>
+                <button type="button" class="photo-grid__like"></button>
+                <button type="button" class="photo-grid__delete"></button>
+            </div>
+        </div>
+    </template>
     <script src="scripts/index.js"></script>
 </body>
 
