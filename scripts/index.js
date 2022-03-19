@@ -10,10 +10,6 @@ const closePopupEdit = popupEdit.querySelector('.popup__close');
 const closePopupAdd = popupAdd.querySelector('.popup__close');
 const closePopupShow = document.querySelector('.popup__close-full');
 
-//popups sumbit button
-const sumbitEdit = document.querySelector('form__submit_type-edit');
-const sumbitAdd = document.querySelector('form__submit_type-add');
-
 //form elements
 const formElementEdit = document.querySelector('.form_profile-edit');
 const formElementAdd = document.querySelector('.form_cards-add');
@@ -21,7 +17,6 @@ const formElementAdd = document.querySelector('.form_cards-add');
 //input elements for edit profile popup
 const nameInput = formElementEdit.querySelector('.form__input_type_name');
 const aboutInput = formElementEdit.querySelector('.form__input_type_about');
-const submit = formElementEdit.querySelector('.form__submit');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 
@@ -64,14 +59,14 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function formSubmitHandlerEdit(evt) {
+function handleProfileFormEdit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAbout.textContent = aboutInput.value;
   closePopup(popupEdit);
 }
 
-function formSubmitHandlerAdd(evt) {
+function handleProfileFormAdd(evt) {
   evt.preventDefault();
   const data = {
     name: cardNameInput.value,
@@ -105,15 +100,16 @@ addCards.addEventListener('click', () => {
   popupOpen(popupAdd);
 });
 
-formElementEdit.addEventListener('submit', formSubmitHandlerEdit);
-formElementAdd.addEventListener('submit', formSubmitHandlerAdd);
+formElementEdit.addEventListener('submit', handleProfileFormEdit);
+formElementAdd.addEventListener('submit', handleProfileFormAdd);
 
 
 //add cards
 const cards = document.querySelector('.photo-grid');
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__item');
 
 function addNewCard(data) {
-  const cardElement = document.querySelector('#card-template').content.firstElementChild.cloneNode(true);
+  const cardElement = cardTemplate.cloneNode(true);
   const cardName = cardElement.querySelector('.photo-grid__title');
   const cardImage = cardElement.querySelector('.photo-grid__image');
 
@@ -127,6 +123,7 @@ function addNewCard(data) {
 
   cardName.textContent = data.name;
   cardImage.src = data.link;
+  cardImage.alt = data.name;
 
   likeButton.addEventListener('click', function() {
     likeButton.classList.toggle('photo-grid__like-active');
@@ -138,6 +135,7 @@ function addNewCard(data) {
 
   showImageButton.addEventListener('click', () => {
     imageDescription.textContent = data.name;
+    imagePopup.alt = data.name;
     imagePopup.src = data.link;
     popupOpen(popupShow);
   });
