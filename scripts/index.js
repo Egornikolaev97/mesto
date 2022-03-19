@@ -5,6 +5,9 @@ const popupAdd = document.querySelector('.popup_add');
 const popupShow = document.querySelector('.popup_show');
 const addCards = document.querySelector('.profile__add-btn');
 
+const cards = document.querySelector('.photo-grid');
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__item');
+
 //popups close buttons
 const closePopupEdit = popupEdit.querySelector('.popup__close');
 const closePopupAdd = popupAdd.querySelector('.popup__close');
@@ -102,11 +105,6 @@ addCards.addEventListener('click', () => {
 
 formElementEdit.addEventListener('submit', handleProfileFormEdit);
 formElementAdd.addEventListener('submit', handleProfileFormAdd);
-
-
-//add cards
-const cards = document.querySelector('.photo-grid');
-const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__item');
 
 function addNewCard(data) {
   const cardElement = cardTemplate.cloneNode(true);
