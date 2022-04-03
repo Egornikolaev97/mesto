@@ -24,3 +24,10 @@
         font-size: 14px;
     }
 }
+
+
+.form__submit_disable {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid black;
+}
