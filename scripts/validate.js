@@ -1,4 +1,4 @@
-
+//function for showing errors
 const showError = (formElement, inputElement, errorMessage, {inputErrorClass, errorClass}) => {
     const formError = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
@@ -6,7 +6,7 @@ const showError = (formElement, inputElement, errorMessage, {inputErrorClass, er
     formError.classList.add(errorClass);
 };
 
-
+//function for hiding errors
 const hideError = (formElement, inputElement, {inputErrorClass, errorClass}) => {
     const formError = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(inputErrorClass);
@@ -14,6 +14,7 @@ const hideError = (formElement, inputElement, {inputErrorClass, errorClass}) => 
     formError.textContent = '';
 };
 
+//function for checking validity
 const checkInputValidity = (formElement, inputElement, rest) => {
     if (!inputElement.validity.valid) {
         showError(formElement, inputElement, inputElement.validationMessage, rest);
@@ -22,12 +23,14 @@ const checkInputValidity = (formElement, inputElement, rest) => {
     }
 };
 
+
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
+  //function for changing the batton state
   const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
     if (hasInvalidInput(inputList)) {
       buttonElement.setAttribute('disabled', true)
@@ -37,6 +40,7 @@ const hasInvalidInput = (inputList) => {
       buttonElement.classList.remove(inactiveButtonClass);
     }
   }
+
 
 const setEventListeners = (formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }) => {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
