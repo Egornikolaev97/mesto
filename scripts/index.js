@@ -108,7 +108,7 @@ function handleProfileFormAdd(evt) {
 // function for deleting errors
 function deleteErrors(popup) {
   popupErrors = popup.querySelectorAll('.form__input');
-  popupErrorsActive = popup.querySelectorAll('.form__input-error_active');
+  popupErrorsActive = popup.querySelectorAll('.form__error_active');
 
   popupErrors.forEach((inputElement) => {
     inputElement.classList.remove('form__error');
