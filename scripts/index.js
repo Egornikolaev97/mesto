@@ -1,18 +1,19 @@
 //popups
-const editProfile = document.querySelector('.profile__edit-btn');
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupShow = document.querySelector('.popup_show');
 const popupAll = document.querySelectorAll('.popup');
-const addCards = document.querySelector('.profile__add-btn');
 
-const cards = document.querySelector('.photo-grid');
+const buttonEditProfile = document.querySelector('.profile__edit-btn');
+const buttonAddCard = document.querySelector('.profile__add-btn');
+
+const cardsContainer = document.querySelector('.photo-grid');
 const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__item');
 
 //popups close buttons
-const closePopupEdit = popupEdit.querySelector('.popup__close');
-const closePopupAdd = popupAdd.querySelector('.popup__close');
-const closePopupShow = document.querySelector('.popup__close-full');
+const buttonCloseEdit = popupEdit.querySelector('.popup__close');
+const buttonCloseAdd = popupAdd.querySelector('.popup__close');
+const buttonCloseShow = document.querySelector('.popup__close-full');
 
 //form elements
 const formElementEdit = document.querySelector('.form_profile-edit');
@@ -67,13 +68,12 @@ function popupOpen(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', hadnleEscUp);
-  deleteErrors(popup);
 }
 
 //fucntion for closing popup with the escape
 function hadnleEscUp(evt) {
-  const popupActive = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const popupActive = document.querySelector('.popup_opened');
     closePopup(popupActive);
   }
 }
@@ -121,29 +121,31 @@ function deleteErrors(popup) {
 }
 
 //listeners
-closePopupEdit.addEventListener('click', () => {
+buttonCloseEdit.addEventListener('click', () => {
   closePopup(popupEdit);
 });
 
-closePopupAdd.addEventListener('click', () => {
+buttonCloseAdd.addEventListener('click', () => {
   closePopup(popupAdd);
 });
 
-closePopupShow.addEventListener('click', () => {
+buttonCloseShow.addEventListener('click', () => {
   closePopup(popupShow);
 });
 
-editProfile.addEventListener('click', () => {
+buttonEditProfile.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
   popupOpen(popupEdit);
+  deleteErrors(popupEdit);
 });
 
-addCards.addEventListener('click', () => {
+buttonAddCard.addEventListener('click', () => {
   formElementAdd.reset();
-  popupOpen(popupAdd);
   buttonSubmit.setAttribute('disabled', true);
   buttonSubmit.classList.add('form__submit_disabled');
+  popupOpen(popupAdd);
+  deleteErrors(popupAdd);
 });
 
 formElementEdit.addEventListener('submit', handleProfileFormEdit);
@@ -157,9 +159,9 @@ function addNewCard(data) {
   const cardImage = cardElement.querySelector('.photo-grid__image');
 
 //buttons
-  const likeButton = cardElement.querySelector('.photo-grid__like');
-  const deleteButton = cardElement.querySelector('.photo-grid__delete');
-  const showImageButton = cardElement.querySelector('.photo-grid__show-btn');
+  const buttonLike = cardElement.querySelector('.photo-grid__like');
+  const buttonDelete = cardElement.querySelector('.photo-grid__delete');
+  const buttonShowImage = cardElement.querySelector('.photo-grid__show-btn');
 
   const imagePopup = popupShow.querySelector('.popup__image');
   const imageDescription = popupShow.querySelector('.popup__description');
@@ -168,15 +170,15 @@ function addNewCard(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
-  likeButton.addEventListener('click', function() {
-    likeButton.classList.toggle('photo-grid__like-active');
+  buttonLike.addEventListener('click', function() {
+    buttonLike.classList.toggle('photo-grid__like-active');
   });
 
-  deleteButton.addEventListener('click', function() {
-    deleteButton.closest('.photo-grid__item').remove();
+  buttonDelete.addEventListener('click', function() {
+    buttonDelete.closest('.photo-grid__item').remove();
   });
 
-  showImageButton.addEventListener('click', () => {
+  buttonShowImage.addEventListener('click', () => {
     imageDescription.textContent = data.name;
     imagePopup.alt = data.name;
     imagePopup.src = data.link;
@@ -188,7 +190,7 @@ function addNewCard(data) {
 
 function renderCard(data) {
   const cardElement = addNewCard(data);
-  cards.prepend(cardElement);
+  cardsContainer.prepend(cardElement);
 }
 
 initialCards.reverse().forEach((card) => {
