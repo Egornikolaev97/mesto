@@ -111,11 +111,11 @@ function deleteErrors(popup) {
   popupErrorsActive = popup.querySelectorAll('.form__input-error_active');
 
   popupErrors.forEach((inputElement) => {
-    inputElement.classList.remove('form__input_type_error');
+    inputElement.classList.remove('form__error');
   });
 
   popupErrorsActive.forEach((formError) => {
-    formError.classList.remove('form__input-error_active');
+    formError.classList.remove('form__active');
     formError.textContent = '';
   });
 }
@@ -143,7 +143,7 @@ addCards.addEventListener('click', () => {
   formElementAdd.reset();
   popupOpen(popupAdd);
   buttonSubmit.setAttribute('disabled', true);
-  buttonSubmit.classList.add('form__submit_disable');
+  buttonSubmit.classList.add('form__submit_disabled');
 });
 
 formElementEdit.addEventListener('submit', handleProfileFormEdit);

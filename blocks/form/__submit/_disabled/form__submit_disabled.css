@@ -1,0 +1,5 @@
+.form__submit_disabled {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid black;
+}
