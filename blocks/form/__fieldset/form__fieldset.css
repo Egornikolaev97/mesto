@@ -10,7 +10,7 @@
 
 @media (max-width: 650px) {
     .form__fieldset {
-        margin-bottom: 45px;
+        margin-bottom: 16px;
         width: 238px;
     }
 }

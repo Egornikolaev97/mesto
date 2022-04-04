@@ -17,10 +17,10 @@
     opacity: .8;
 }
 
-
 @media (max-width: 650px) {
-    .form__sumbit {
+    .form__submit {
         line-height: 17px;
         font-size: 14px;
+        height: 46px;
     }
 }
