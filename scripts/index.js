@@ -1,3 +1,6 @@
+import Card from './Card.js';
+export {imageDescription, imagePopup, popupShow, popupOpen};
+
 //popups
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
@@ -8,7 +11,6 @@ const buttonEditProfile = document.querySelector('.profile__edit-btn');
 const buttonAddCard = document.querySelector('.profile__add-btn');
 //cards
 const cardsContainer = document.querySelector('.photo-grid');
-const cardTemplate = document.querySelector('#card-template').content.querySelector('.photo-grid__item');
 //form elements
 const formElementEdit = document.querySelector('.form_profile-edit');
 const formElementAdd = document.querySelector('.form_cards-add');
@@ -22,6 +24,9 @@ const profileAbout = document.querySelector('.profile__about');
 //input elements for add cards popup
 const cardNameInput = popupAdd.querySelector('.form__input_type_title');
 const cardLinkInput = popupAdd.querySelector('.form__input_type_link');
+//for show image
+const imagePopup = popupShow.querySelector('.popup__image');
+const imageDescription = popupShow.querySelector('.popup__description');
 
 const initialCards = [{
     name: 'Архыз',
@@ -74,7 +79,7 @@ popupAll.forEach((popup) => {
     if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
       closePopup(popup);
     }
-  })
+  });
 });
 
 
@@ -98,14 +103,14 @@ function handleProfileFormAdd(evt) {
 
 // function for deleting errors
 function deleteErrors(popup) {
-  popupErrors = popup.querySelectorAll('.form__input');
-  popupErrorsActive = popup.querySelectorAll('.form__error_active');
+  // popupErrors = popup.querySelectorAll('.form__input');
+  // popupErrorsActive = popup.querySelectorAll('.form__error_active');
 
-  popupErrors.forEach((inputElement) => {
+  popup.querySelectorAll('.form__input').forEach((inputElement) => {
     inputElement.classList.remove('form__error');
   });
 
-  popupErrorsActive.forEach((formError) => {
+  popup.querySelectorAll('.form__error_active').forEach((formError) => {
     formError.classList.remove('form__active');
     formError.textContent = '';
   });
@@ -131,47 +136,15 @@ formElementEdit.addEventListener('submit', handleProfileFormEdit);
 formElementAdd.addEventListener('submit', handleProfileFormAdd);
 
 
-//function for adding new cards
-function addNewCard(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardName = cardElement.querySelector('.photo-grid__title');
-  const cardImage = cardElement.querySelector('.photo-grid__image');
-
-//buttons
-  const buttonLike = cardElement.querySelector('.photo-grid__like');
-  const buttonDelete = cardElement.querySelector('.photo-grid__delete');
-  const buttonShowImage = cardElement.querySelector('.photo-grid__show-btn');
-
-  const imagePopup = popupShow.querySelector('.popup__image');
-  const imageDescription = popupShow.querySelector('.popup__description');
-
-  cardName.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-
-  buttonLike.addEventListener('click', function() {
-    buttonLike.classList.toggle('photo-grid__like-active');
-  });
-
-  buttonDelete.addEventListener('click', function() {
-    buttonDelete.closest('.photo-grid__item').remove();
-  });
-
-  buttonShowImage.addEventListener('click', () => {
-    imageDescription.textContent = data.name;
-    imagePopup.alt = data.name;
-    imagePopup.src = data.link;
-    popupOpen(popupShow);
-  });
-
-  return cardElement;
-};
 
 function renderCard(data) {
-  const cardElement = addNewCard(data);
+  const addNewCard = new Card(data, '.card-template')
+  const cardElement = addNewCard.generateCard();
+
   cardsContainer.prepend(cardElement);
 }
 
 initialCards.reverse().forEach((card) => {
   renderCard(card);
 });
+
