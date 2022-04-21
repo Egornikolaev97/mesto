@@ -1,5 +1,11 @@
 import Card from './Card.js';
-export {imageDescription, imagePopup, popupShow, popupOpen};
+import FormValidator from './FormValidator.js';
+export {
+  imageDescription,
+  imagePopup,
+  popupShow,
+  popupOpen
+};
 
 //popups
 const popupEdit = document.querySelector('.popup_edit');
@@ -54,6 +60,15 @@ const initialCards = [{
   }
 ];
 
+const config = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__input_type-error',
+  errorClass: 'form__error_active'
+};
+
 //function for opening popups
 function popupOpen(popup) {
   popup.classList.add('popup_opened');
@@ -103,9 +118,6 @@ function handleProfileFormAdd(evt) {
 
 // function for deleting errors
 function deleteErrors(popup) {
-  // popupErrors = popup.querySelectorAll('.form__input');
-  // popupErrorsActive = popup.querySelectorAll('.form__error_active');
-
   popup.querySelectorAll('.form__input').forEach((inputElement) => {
     inputElement.classList.remove('form__error');
   });
@@ -148,3 +160,8 @@ initialCards.reverse().forEach((card) => {
   renderCard(card);
 });
 
+const formEditValidator = new FormValidator(config, popupEdit);
+const formAddValidator  = new FormValidator(config, popupAdd);
+
+formEditValidator.enableValidation();
+formAddValidator.enableValidation();
