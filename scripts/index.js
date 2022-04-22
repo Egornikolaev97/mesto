@@ -20,8 +20,9 @@ const cardsContainer = document.querySelector('.photo-grid');
 //form elements
 const formElementEdit = document.querySelector('.form_profile-edit');
 const formElementAdd = document.querySelector('.form_cards-add');
-//submit button
-const buttonSubmit = document.querySelector('.form__submit_type-add');
+//submit buttons
+const buttonSubmitAdd = popupAdd.querySelector('.form__submit');
+const buttonSubmitEdit = popupEdit.querySelector('.form__submit');
 //input elements for edit profile popup
 const nameInput = formElementEdit.querySelector('.form__input_type_name');
 const aboutInput = formElementEdit.querySelector('.form__input_type_about');
@@ -115,40 +116,7 @@ function handleProfileFormAdd(evt) {
   closePopup(popupAdd);
 };
 
-
-// function for deleting errors
-function deleteErrors(popup) {
-  popup.querySelectorAll('.form__input').forEach((inputElement) => {
-    inputElement.classList.remove('form__error');
-  });
-
-  popup.querySelectorAll('.form__error_active').forEach((formError) => {
-    formError.classList.remove('form__active');
-    formError.textContent = '';
-  });
-}
-
-//listeners
-buttonEditProfile.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
-  deleteErrors(popupEdit);
-  popupOpen(popupEdit);
-});
-
-buttonAddCard.addEventListener('click', () => {
-  formElementAdd.reset();
-  buttonSubmit.setAttribute('disabled', true);
-  buttonSubmit.classList.add('form__submit_disabled');
-  deleteErrors(popupAdd);
-  popupOpen(popupAdd);
-});
-
-formElementEdit.addEventListener('submit', handleProfileFormEdit);
-formElementAdd.addEventListener('submit', handleProfileFormAdd);
-
-
-
+//function for rendering new cards
 function renderCard(data) {
   const addNewCard = new Card(data, '.card-template')
   const cardElement = addNewCard.generateCard();
@@ -160,8 +128,30 @@ initialCards.reverse().forEach((card) => {
   renderCard(card);
 });
 
-const formEditValidator = new FormValidator(config, popupEdit);
-const formAddValidator  = new FormValidator(config, popupAdd);
+//listeners
+buttonEditProfile.addEventListener('click', () => {
+  nameInput.value = profileName.textContent;
+  aboutInput.value = profileAbout.textContent;
+  formEditValidator.resetErrors();
+  popupOpen(popupEdit);
+});
 
+buttonAddCard.addEventListener('click', () => {
+  formElementAdd.reset();
+  // buttonSubmitAdd.setAttribute('disabled', true);
+  // buttonSubmitAdd.classList.add('form__submit_disabled');
+  formAddValidator.resetErrors();
+  popupOpen(popupAdd);
+});
+
+formElementEdit.addEventListener('submit', handleProfileFormEdit);
+formElementAdd.addEventListener('submit', handleProfileFormAdd);
+
+
+//validation of profile editing form
+const formEditValidator = new FormValidator(config, popupEdit);
 formEditValidator.enableValidation();
+
+//validation of adding card form
+const formAddValidator  = new FormValidator(config, popupAdd);
 formAddValidator.enableValidation();

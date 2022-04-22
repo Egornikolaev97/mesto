@@ -10,10 +10,6 @@
     box-sizing: border-box;
 }
 
-.form__input_type-error {
-    border-bottom-color: red;
-}
-
 .form__input:last-child {
     margin-bottom: 0;
 }
