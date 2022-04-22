@@ -89,7 +89,6 @@ function hadnleEscUp(evt) {
     closePopup(popupActive);
   }
 }
-//
 popupAll.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
@@ -138,8 +137,6 @@ buttonEditProfile.addEventListener('click', () => {
 
 buttonAddCard.addEventListener('click', () => {
   formElementAdd.reset();
-  // buttonSubmitAdd.setAttribute('disabled', true);
-  // buttonSubmitAdd.classList.add('form__submit_disabled');
   formAddValidator.resetErrors();
   popupOpen(popupAdd);
 });
@@ -148,10 +145,10 @@ formElementEdit.addEventListener('submit', handleProfileFormEdit);
 formElementAdd.addEventListener('submit', handleProfileFormAdd);
 
 
-//validation of profile editing form
+//validation of profile editing
 const formEditValidator = new FormValidator(config, popupEdit);
 formEditValidator.enableValidation();
 
-//validation of adding card form
+//validation of adding card
 const formAddValidator  = new FormValidator(config, popupAdd);
 formAddValidator.enableValidation();
