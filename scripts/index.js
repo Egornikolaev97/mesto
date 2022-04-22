@@ -1,11 +1,8 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-export {
-  imageDescription,
-  imagePopup,
-  popupShow,
-  popupOpen
-};
+import { openPopup, closePopup } from './utils.js';
+import { initialCards } from './initialCards.js';
+export { openPopup };
 
 //popups
 const popupEdit = document.querySelector('.popup_edit');
@@ -20,9 +17,6 @@ const cardsContainer = document.querySelector('.photo-grid');
 //form elements
 const formElementEdit = document.querySelector('.form_profile-edit');
 const formElementAdd = document.querySelector('.form_cards-add');
-//submit buttons
-const buttonSubmitAdd = popupAdd.querySelector('.form__submit');
-const buttonSubmitEdit = popupEdit.querySelector('.form__submit');
 //input elements for edit profile popup
 const nameInput = formElementEdit.querySelector('.form__input_type_name');
 const aboutInput = formElementEdit.querySelector('.form__input_type_about');
@@ -32,34 +26,34 @@ const profileAbout = document.querySelector('.profile__about');
 const cardNameInput = popupAdd.querySelector('.form__input_type_title');
 const cardLinkInput = popupAdd.querySelector('.form__input_type_link');
 //for show image
-const imagePopup = popupShow.querySelector('.popup__image');
-const imageDescription = popupShow.querySelector('.popup__description');
+// const imagePopup = popupShow.querySelector('.popup__image');
+// const imageDescription = popupShow.querySelector('.popup__description');
 
-const initialCards = [{
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+// const initialCards = [{
+//     name: 'Архыз',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+//   },
+//   {
+//     name: 'Челябинская область',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+//   },
+//   {
+//     name: 'Иваново',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+//   },
+//   {
+//     name: 'Камчатка',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+//   },
+//   {
+//     name: 'Холмогорский район',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+//   },
+//   {
+//     name: 'Байкал',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+//   }
+// ];
 
 const config = {
   formSelector: '.form',
@@ -77,18 +71,6 @@ formEditValidator.enableValidation();
 //validation of adding card
 const formAddValidator  = new FormValidator(config, popupAdd);
 formAddValidator.enableValidation();
-
-//function for opening popups
-function popupOpen(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', hadnleEscUp);
-}
-
-//function for closing popups
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', hadnleEscUp);
-}
 
 //fucntion for closing popup with the escape
 function hadnleEscUp(evt) {
@@ -140,13 +122,13 @@ buttonEditProfile.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
   formEditValidator.resetErrors();
-  popupOpen(popupEdit);
+  openPopup(popupEdit);
 });
 
 buttonAddCard.addEventListener('click', () => {
   formElementAdd.reset();
   formAddValidator.resetErrors();
-  popupOpen(popupAdd);
+  openPopup(popupAdd);
 });
 
 formElementEdit.addEventListener('submit', handleProfileFormEdit);

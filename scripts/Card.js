@@ -1,4 +1,4 @@
-import {imageDescription, imagePopup, popupShow, popupOpen} from "./index.js"
+import { imageDescription, imagePopup, popupShow, openPopup } from "./utils.js";
 
 export default class Card {
     constructor(data, cardSelector) {
@@ -9,8 +9,7 @@ export default class Card {
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector('#card-template').content.querySelector('.photo-grid__item').cloneNode(true);
-
+        const cardElement = document.querySelector(this._cardSelector).content.querySelector('.photo-grid__item').cloneNode(true);
         return cardElement;
     }
 
@@ -31,7 +30,7 @@ export default class Card {
         this._setEventListeners();
 
         return this._element;
-    };
+    }
 
     _setEventListeners() {
         this._buttonLike.addEventListener('click', () => {
@@ -42,21 +41,22 @@ export default class Card {
         });
         this._buttonShowImage.addEventListener('click', () => {
             this._clickButtonShowImage();
-        })
-    };
+        });
+    }
 
     _clickButtonLike() {
         this._buttonLike.classList.toggle('photo-grid__like-active');
-    };
+    }
 
     _clickButtonDelete() {
-        this._buttonDelete.closest('.photo-grid__item').remove();
-    };
+        this._element.remove();
+        this._element = null;
+    }
 
     _clickButtonShowImage() {
         imageDescription.textContent = this._title;
         imagePopup.alt = this._alt;
         imagePopup.src = this._link;
-        popupOpen(popupShow);
-    };
+        openPopup(popupShow);
+    }
 }

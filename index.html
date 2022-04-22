@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
+    <link rel="icon" href="./images/favicon-32x32.png">
     <link rel="stylesheet" href="pages/index.css" />
 </head>
 
@@ -36,12 +37,12 @@
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__fieldset">
                     <label class="form__field">
-                        <input id="name-input" name="name" autocomplete="off" value="Жак-Ив Кусто" type="text" required
+                        <input id="name-input" name="name" placeholder="Введите имя" autocomplete="off" value="Жак-Ив Кусто" type="text" required
                             minlength="2" maxlength="40" class="form__input form__input_type_name">
                         <span class="name-input-error form__error"></span>
                     </label>
                     <label class="form__field">
-                        <input id="about-input" name="about" autocomplete="off" value="Исследователь океана" type="text"
+                        <input id="about-input" placeholder="Введите профессию" name="about" autocomplete="off" value="Исследователь океана" type="text"
                             required minlength="2" maxlength="200" class="form__input form__input_type_about">
                         <span class="about-input-error form__error"></span>
                     </label>
@@ -81,7 +82,7 @@
             <p class="popup__description"></p>
         </div>
     </div>
-    <template id="card-template">
+    <template class="card-template">
         <div class="photo-grid__item">
             <div type="button" class="photo-grid__show-btn">
                 <img class="photo-grid__image" src="ссылка" alt="здесь красивая фотография">
@@ -94,9 +95,6 @@
         </div>
     </template>
     <script type="module" src="scripts/index.js"></script>
-    <!-- <script type="module" src="scripts/validate.js"></script> -->
-    <script type="module" src="scripts/Card.js"></script>
-    <script type="module" src="scripts/FormValidator.js"></script>
 </body>
 
 </html>
