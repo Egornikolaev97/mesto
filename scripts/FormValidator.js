@@ -13,7 +13,6 @@ export default class FormValidator {
       inputElement.classList.add(this._config.inputErrorClass);
       formError.classList.add(this._config.errorClass);
       formError.textContent = errorMessage;
-
     }
 
     //method for hiding errors
@@ -37,13 +36,13 @@ export default class FormValidator {
       });
     }
 
-    //method of disable button
+    //disable button method
     _disableButton() {
       this._buttonElement.setAttribute('disabled', true);
       this._buttonElement.classList.add(this._config.inactiveButtonClass);
     }
 
-    //method of enable button
+    //enbale button method
     _enableButton() {
       this._buttonElement.removeAttribute('disabled', false);
       this._buttonElement.classList.remove(this._config.inactiveButtonClass);
@@ -54,6 +53,7 @@ export default class FormValidator {
       this._hasInvalidInput() ? this._disableButton() : this._enableButton();
     }
 
+    //listeners
     _setEventListeners() {
       this._toggleButtonState();
       this._inputList.forEach((inputElement) => {
@@ -77,7 +77,10 @@ export default class FormValidator {
       });
     }
 
+    //enable validation method
     enableValidation() {
       this._setEventListeners();
     }
 }
+
+
