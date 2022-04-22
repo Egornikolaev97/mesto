@@ -70,6 +70,14 @@ const config = {
   errorClass: 'form__error_active'
 };
 
+//validation of profile editing
+const formEditValidator = new FormValidator(config, popupEdit);
+formEditValidator.enableValidation();
+
+//validation of adding card
+const formAddValidator  = new FormValidator(config, popupAdd);
+formAddValidator.enableValidation();
+
 //function for opening popups
 function popupOpen(popup) {
   popup.classList.add('popup_opened');
@@ -143,12 +151,3 @@ buttonAddCard.addEventListener('click', () => {
 
 formElementEdit.addEventListener('submit', handleProfileFormEdit);
 formElementAdd.addEventListener('submit', handleProfileFormAdd);
-
-
-//validation of profile editing
-const formEditValidator = new FormValidator(config, popupEdit);
-formEditValidator.enableValidation();
-
-//validation of adding card
-const formAddValidator  = new FormValidator(config, popupAdd);
-formAddValidator.enableValidation();
