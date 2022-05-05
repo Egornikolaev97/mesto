@@ -1,7 +1,8 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import { openPopup, closePopup } from './utils.js';
-import { initialCards } from './initialCards.js';
+import Card from '../../scripts/componentns/Card.js';
+import Section from '../../scripts/componentns/Section.js';
+import FormValidator from '../scripts/componentns/FormValidator.js';
+import { openPopup, closePopup } from '../scripts/utils/utils.js';
+import { initialCards } from '../../scripts/utils/initialCards.js';
 export { openPopup };
 
 //popups
@@ -9,7 +10,7 @@ const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupShow = document.querySelector('.popup_show');
 const popupAll = document.querySelectorAll('.popup');
-//popups button
+//popups buttonz
 const buttonEditProfile = document.querySelector('.profile__edit-btn');
 const buttonAddCard = document.querySelector('.profile__add-btn');
 //cards
@@ -50,6 +51,7 @@ function hadnleEscUp(evt) {
     closePopup(popupActive);
   }
 }
+
 popupAll.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
@@ -57,7 +59,6 @@ popupAll.forEach((popup) => {
     }
   });
 });
-
 
 function handleProfileFormEdit(evt) {
   evt.preventDefault();

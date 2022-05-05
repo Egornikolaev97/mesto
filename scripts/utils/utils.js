@@ -10,7 +10,6 @@ function closePopup(popup) {
     document.removeEventListener('keydown', hadnleEscUp);
   }
 
-
 //function for closing popup by ESC
 function hadnleEscUp(evt) {
     if (evt.key === 'Escape') {
@@ -18,7 +17,6 @@ function hadnleEscUp(evt) {
       closePopup(popupActive);
     }
   }
-
 
 const popupShow = document.querySelector('.popup_show');
 const imagePopup = popupShow.querySelector('.popup__image');
