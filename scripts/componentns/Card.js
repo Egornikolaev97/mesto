@@ -1,15 +1,21 @@
-import { imageDescription, imagePopup, popupShow, openPopup } from "../utils/utils.js";
+// import { imageDescription, imagePopup, popupShow, openPopup } from "../utils/utils.js";
 
 export default class Card {
-    constructor(data, cardSelector) {
-        this._title = data.name;
+    constructor({data, handleCardClick}, cardSelector) {
+        this._data = data;
+        this._name = data.name;
         this._link = data.link;
-        this._alt = data.name;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector(this._cardSelector).content.querySelector('.photo-grid__item').cloneNode(true);
+        const cardElement = document
+        .querySelector(this._cardSelector)
+        .content
+        .querySelector('.photo-grid__item')
+        .cloneNode(true);
+
         return cardElement;
     }
 
@@ -23,9 +29,9 @@ export default class Card {
         const cardName = this._element.querySelector('.photo-grid__title');
         const cardImage = this._element.querySelector('.photo-grid__image');
 
-        cardName.textContent = this._title;
+        cardName.textContent = this._name;
         cardImage.src = this._link;
-        cardImage.alt = this._alt;
+        cardImage.alt = this._name;
 
         this._setEventListeners();
 
@@ -34,29 +40,22 @@ export default class Card {
 
     _setEventListeners() {
         this._buttonLike.addEventListener('click', () => {
-            this._clickButtonLike();
+            this._handleCardLike();
         });
         this._buttonDelete.addEventListener('click', () => {
-            this._clickButtonDelete();
+            this._handleCardDelete();
         });
         this._buttonShowImage.addEventListener('click', () => {
-            this._clickButtonShowImage();
+            this._handleCardClick();
         });
     }
 
-    _clickButtonLike() {
+    _handleCardLike() {
         this._buttonLike.classList.toggle('photo-grid__like-active');
     }
 
-    _clickButtonDelete() {
+    _handleCardDelete() {
         this._element.remove();
         this._element = null;
-    }
-
-    _clickButtonShowImage() {
-        imageDescription.textContent = this._title;
-        imagePopup.alt = this._alt;
-        imagePopup.src = this._link;
-        openPopup(popupShow);
     }
 }

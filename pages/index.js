@@ -1,16 +1,18 @@
 import Card from '../../scripts/componentns/Card.js';
 import Section from '../../scripts/componentns/Section.js';
+import Popup from '../../scripts/componentns/Popup.js';
+import PopupWithImage from '../../scripts/componentns/PopupWithImage.js'
 import FormValidator from '../scripts/componentns/FormValidator.js';
-import { openPopup, closePopup } from '../scripts/utils/utils.js';
 import { initialCards } from '../../scripts/utils/initialCards.js';
-export { openPopup };
+// export { openPopup };
+// import { closePopup } from '../scripts/utils/utils.js';
 
 //popups
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
-const popupShow = document.querySelector('.popup_show');
+// const popupShow = document.querySelector('.popup_show');
 const popupAll = document.querySelectorAll('.popup');
-//popups buttonz
+//popups buttons
 const buttonEditProfile = document.querySelector('.profile__edit-btn');
 const buttonAddCard = document.querySelector('.profile__add-btn');
 //cards
@@ -44,64 +46,88 @@ formEditValidator.enableValidation();
 const formAddValidator  = new FormValidator(config, popupAdd);
 formAddValidator.enableValidation();
 
-//fucntion for closing popup with the escape
-function hadnleEscUp(evt) {
-  if (evt.key === 'Escape') {
-    const popupActive = document.querySelector('.popup_opened');
-    closePopup(popupActive);
-  }
-}
-
-popupAll.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
-      closePopup(popup);
-    }
-  });
-});
-
-function handleProfileFormEdit(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileAbout.textContent = aboutInput.value;
-  closePopup(popupEdit);
-}
-
-function handleProfileFormAdd(evt) {
-  evt.preventDefault();
-  const data = {
-    name: cardNameInput.value,
-    link: cardLinkInput.value,
-  };
-  renderCard(data);
-  closePopup(popupAdd);
-};
+const popupShowImage = new PopupWithImage('.popup_show');
+popupShowImage.setEventListeners();
 
 //function for rendering new cards
 function renderCard(data) {
-  const addNewCard = new Card(data, '.card-template')
+  const addNewCard = new Card(
+    {
+      data: data,
+      handleCardClick: () => {
+        popupShowImage.open(data);
+      },
+    },
+    '.card-template'
+  );
   const cardElement = addNewCard.generateCard();
 
   cardsContainer.prepend(cardElement);
+  return cardElement;
 }
 
-initialCards.reverse().forEach((card) => {
-  renderCard(card);
-});
+
+const cardList = new Section({
+  items: initialCards.reverse(),
+  renderer: renderCard
+},
+'.photo-grid'
+);
+
+cardList.renderItems();
+
+
+
+// initialCards.reverse().forEach((card) => {
+//   renderCard(card);
+// });
 
 //listeners
-buttonEditProfile.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
-  formEditValidator.resetErrors();
-  openPopup(popupEdit);
-});
+// buttonEditProfile.addEventListener('click', () => {
+//   // nameInput.value = profileName.textContent;
+//   // aboutInput.value = profileAbout.textContent;
+//   formEditValidator.resetErrors();
+//   popupEdit.open();
+// });
 
-buttonAddCard.addEventListener('click', () => {
-  formElementAdd.reset();
-  formAddValidator.resetErrors();
-  openPopup(popupAdd);
-});
+// buttonAddCard.addEventListener('click', () => {
+//   formElementAdd.reset();
+//   formAddValidator.resetErrors();
 
-formElementEdit.addEventListener('submit', handleProfileFormEdit);
-formElementAdd.addEventListener('submit', handleProfileFormAdd);
+//   popupAdd.open();
+// });
+
+// formElementEdit.addEventListener('submit', handleProfileFormEdit);
+// formElementAdd.addEventListener('submit', handleProfileFormAdd);
+
+
+// popupEdit.setEventListeners();
+// popupAdd.setEventListeners();
+
+
+// popupAll.forEach((popup) => {
+//   popup.addEventListener('mousedown', (evt) => {
+//     if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
+//       closePopup(popup);
+//     }
+//   });
+// });
+
+// function handleProfileFormEdit(evt) {
+//   evt.preventDefault();
+//   profileName.textContent = nameInput.value;
+//   profileAbout.textContent = aboutInput.value;
+//   closePopup(popupEdit);
+// }
+
+
+// function handleProfileFormAdd(evt) {
+//   evt.preventDefault();
+//   const data = {
+//     name: cardNameInput.value,
+//     link: cardLinkInput.value,
+//   };
+//   renderCard(data);
+//   closePopup(popupAdd);
+// };
+
