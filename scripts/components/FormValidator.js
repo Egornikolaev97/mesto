@@ -62,10 +62,6 @@ export default class FormValidator {
           this._toggleButtonState();
         });
       });
-
-      this._formElement.addEventListener('submit', (event) => {
-        event.preventDefault();
-      });
     }
 
     //method for resetting errors

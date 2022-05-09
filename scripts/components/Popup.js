@@ -2,6 +2,8 @@ export default class Popup {
     constructor(popupSelector) {
         this._popupSelector = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
+
+        console.log(popupSelector);
     }
 
     open() {
@@ -14,11 +16,13 @@ export default class Popup {
         this._popupSelector.classList.remove('popup_opened');
     }
 
+
     _handleEscClose(evt) {
         if (evt.key === 'Escape') {
             this.close();
         }
     }
+
 
     setEventListeners() {
         this._popupSelector.addEventListener('mousedown', (evt) => {
