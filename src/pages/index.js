@@ -17,7 +17,6 @@ import {
   nameInput,
   aboutInput,
 } from '../scripts/utils/constants.js';
-
 import './index.css';
 
 
