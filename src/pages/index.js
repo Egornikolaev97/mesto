@@ -13,11 +13,11 @@ import {
   formElementAdd,
   buttonEditProfile,
   buttonAddCard,
-  cardsContainer,
   nameInput,
   aboutInput,
 } from '../scripts/utils/constants.js';
 import './index.css';
+
 
 
 //validation of profile editing
@@ -42,17 +42,19 @@ const renderCard = (data) => {
     },
     '.card-template'
   );
-  const cardElement = card.generateCard();
-  cardsContainer.prepend(cardElement);
+  const cardElement = card.generateCard()
   return cardElement;
-}
+};
+
 
 //rendering cards
 const section = new Section({
     items: initialCards.reverse(),
     renderer: renderCard
   },
-  '.photo-grid');
+  '.photo-grid'
+  );
+
 section.renderItems();
 
 //creating popup for adding cards
@@ -70,7 +72,6 @@ popupAdd.setEventListeners();
 //adding listener for open popup with add card form
 buttonAddCard.addEventListener('click', () => {
   formAddValidator.resetErrors();
-  formElementAdd.reset();
   popupAdd.open();
 });
 
