@@ -11,3 +11,15 @@
     overflow: hidden;
     width: 200px;
 }
+
+@media (min-width: 650px) and (max-width: 980px) {
+    .photo-grid__title {
+        width: 300px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 650px) {
+    .photo-grid__title {
+        width: 400px;
+    }
+}

@@ -15,10 +15,13 @@
     </header>
     <main>
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
+            <div class="profile__avatar-container">
+                <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
+                <button class="profile__avatar-btn" type="button"></button>
+            </div>
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__about">Исследователь океана</p>
+                <h1 class="profile__name">Загрузка</h1>
+                <p class="profile__about">...</p>
                 <button type="button" class="profile__edit-btn" aria-label="редактировать профиль"></button>
             </div>
             <button type="button" class="profile__add-btn" aria-label="добавить фотографии"></button>
@@ -29,6 +32,9 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
+
+    <!---------------------- popup for editing profile information ---------------------->
+
     <div class="popup popup_edit">
         <div class="popup__container">
             <button type="button" class="popup__close popup__close-edit" aria-label="закрыть форму">Закрыть</button>
@@ -36,13 +42,15 @@
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__fieldset">
                     <label class="form__field">
-                        <input id="name-input" name="name" placeholder="Введите имя" autocomplete="off" value="Жак-Ив Кусто" type="text" required
-                            minlength="2" maxlength="40" class="form__input form__input_type_name">
+                        <input id="name-input" name="name" placeholder="Введите имя" autocomplete="off"
+                             type="text" required minlength="2" maxlength="40"
+                            class="form__input form__input_type_name">
                         <span class="name-input-error form__error"></span>
                     </label>
                     <label class="form__field">
-                        <input id="about-input" placeholder="Введите профессию" name="about" autocomplete="off" value="Исследователь океана" type="text"
-                            required minlength="2" maxlength="200" class="form__input form__input_type_about">
+                        <input id="about-input" placeholder="Введите профессию" name="about" autocomplete="off"
+                             type="text" required minlength="2" maxlength="200"
+                            class="form__input form__input_type_about">
                         <span class="about-input-error form__error"></span>
                     </label>
                 </fieldset>
@@ -51,6 +59,9 @@
             </form>
         </div>
     </div>
+
+    <!---------------------- popup for adding cards ---------------------->
+
     <div class="popup popup_add">
         <div class="popup__container">
             <button type="button" class="popup__close popup__close-add" aria-label="закрыть форму">Закрыть</button>
@@ -63,8 +74,8 @@
                         <span class="place-input-error form__error"></span>
                     </label>
                     <label class="form__field">
-                        <input id="link-input" name="link" autocomplete="off" placeholder="Ссылка на картинку" type="url"
-                            class="form__input form__input_type_link" required>
+                        <input id="link-input" name="link" autocomplete="off" placeholder="Ссылка на картинку"
+                            type="url" class="form__input form__input_type_link" required>
                         <span class="link-input-error form__error"></span>
                     </label>
                 </fieldset>
@@ -74,6 +85,9 @@
             </form>
         </div>
     </div>
+
+    <!---------------------- popup for showing images in full size ---------------------->
+
     <div class="popup popup_show popup_darkoverlay">
         <div class="popup__fullscreen">
             <button type="button" class="popup__close popup__close-full" aria-label="закрыть форму">Закрыть</button>
@@ -81,6 +95,41 @@
             <p class="popup__description"></p>
         </div>
     </div>
+
+    <!---------------------- popup for editing avatar  ---------------------->
+
+    <div class="popup popup_avatar">
+        <div class="popup__container">
+            <button type="button" class="popup__close popup__close-avatar" aria-label="закрыть форму">Закрыть</button>
+            <form class="form form_avatar-edit" navalidate>
+                <h2 class="form__title">Обновить аватар</h2>
+                <fieldset class="form__fieldset">
+                    <label class="form__field">
+                        <input id="place-input" name="avatar" autocomplete="off" placeholder="ссылка на картинку"
+                            type="text" class="form__input form__input_type_link" required minlength="2" maxlength="30">
+                        <span class="place-input-error form__error"></span>
+                    </label>
+                </fieldset>
+                <button type="submit" class="form__submit form__submit_type-add"
+                    aria-label="сохранить изменения">Создать
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!---------------------- popup with confirmation of card deletion ---------------------->
+
+    <div class="popup popup_delete">
+        <div class="popup__container">
+            <button type="button" class="popup__close popup__close-delete" aria-label="закрыть форму">Закрыть</button>
+            <h2 class="form__title">Вы уверены?</h2>
+            <button type="submit" class="form__submit form__submit_type-add" aria-label="сохранить изменения">Да
+            </button>
+        </div>
+    </div>
+
+    <!---------------------- card-template ---------------------->
+
     <template class="card-template">
         <div class="photo-grid__item">
             <div type="button" class="photo-grid__show-btn">
@@ -88,7 +137,10 @@
             </div>
             <div class="photo-grid__info">
                 <h2 class="photo-grid__title"></h2>
-                <button type="button" class="photo-grid__like"></button>
+                <div class="photo-grid__like-container">
+                    <button type="button" class="photo-grid__like"></button>
+                    <span class="photo-grid__like-counter">0</span>
+                </div>
                 <button type="button" class="photo-grid__delete"></button>
             </div>
         </div>
