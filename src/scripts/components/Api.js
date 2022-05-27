@@ -15,10 +15,6 @@ export default class Api {
         }
     }
 
-    getAll() {
-        Promise.all([this.getUserInfo(), this.getInitialCards()])
-    }
-
     getUserInfo() {
         return fetch(`${this._url}users/me`, {
             method: 'GET',

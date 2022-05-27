@@ -16,20 +16,4 @@
     opacity: .5;
 }
 
-.photo-grid__like-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 20px;
-}
-
-.photo-grid__like-counter {
-    font-size: 13px;
-    margin-top: 5px;
-    color: #000;
-    font-weight: 400;
-}
-
-
 

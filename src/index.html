@@ -33,8 +33,8 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <!---------------------- popup for editing profile information ---------------------->
 
+<!-- popup for editing profile information -->
     <div class="popup popup_edit">
         <div class="popup__container">
             <button type="button" class="popup__close popup__close-edit" aria-label="закрыть форму">Закрыть</button>
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <!---------------------- popup for adding cards ---------------------->
+    <!-- popup for adding cards -->
 
     <div class="popup popup_add">
         <div class="popup__container">
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <!---------------------- popup for showing images in full size ---------------------->
+    <!-- popup for showing images in full size  -->
 
     <div class="popup popup_show popup_darkoverlay">
         <div class="popup__fullscreen">
@@ -96,18 +96,18 @@
         </div>
     </div>
 
-    <!---------------------- popup for editing avatar  ---------------------->
+  <!-- popup for editing avatar -->
 
     <div class="popup popup_avatar">
         <div class="popup__container">
             <button type="button" class="popup__close popup__close-avatar" aria-label="закрыть форму">Закрыть</button>
-            <form class="form form_avatar-edit" navalidate>
+            <form class="form form_avatar-edit" novalidate>
                 <h2 class="form__title">Обновить аватар</h2>
                 <fieldset class="form__fieldset">
                     <label class="form__field">
-                        <input id="place-input" name="avatar" autocomplete="off" placeholder="ссылка на картинку"
+                        <input id="avatar-input" name="avatar" autocomplete="off" placeholder="ссылка на картинку"
                             type="url" class="form__input form__input_type_link" required>
-                        <span class="place-input-error form__error"></span>
+                        <span class="avatar-input-error form__error"></span>
                     </label>
                 </fieldset>
                 <button type="submit" class="form__submit form__submit_type-add"
@@ -117,18 +117,20 @@
         </div>
     </div>
 
-    <!---------------------- popup with confirmation  ---------------------->
+    <!-- popup with confirmation -->
 
     <div class="popup popup_delete">
         <div class="popup__container">
-            <button type="button" class="popup__close popup__close-delete" aria-label="закрыть форму">Закрыть</button>
+            <form class="form form_delete">
             <h2 class="form__title">Вы уверены?</h2>
             <button type="submit" class="form__submit form__submit-type-confirm" aria-label="сохранить изменения">Да
             </button>
+            <button type="button" class="popup__close popup__close-delete" aria-label="закрыть форму">Закрыть</button>
+            </form>
         </div>
     </div>
 
-    <!---------------------- card-template ---------------------->
+    <!-- card-template -->
 
     <template class="card-template">
         <div class="photo-grid__item">
