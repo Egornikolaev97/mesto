@@ -20,6 +20,7 @@ import {
 } from '../scripts/utils/constants.js';
 import './index.css';
 
+
 //class Api
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-41/',
@@ -46,6 +47,7 @@ const profileInfo = new UserInfo({
   aboutSelector: '.profile__about',
   avatarSelector: '.profile__avatar',
 });
+
 
 //rendering cards
 const renderCard = (data) => {
@@ -107,8 +109,7 @@ const popupAdd = new PopupWithForm('.popup_add', (cardData) => {
     name: cardData.place,
     link: cardData.link
   };
-  api
-    .addCard(data)
+  api.addCard(data)
     .then((data) => {
       section.addItem(renderCard(data));
       popupAdd.close();
@@ -138,19 +139,17 @@ const popupAvatar = new PopupWithForm(
   })
 });
 
-
+//creating popup for editing profile info
 const popupEdit = new PopupWithForm(
   '.popup_edit',
    (data) => {
      popupEdit.loading(true);
-  api.
-  editUserInfo(data)
+  api.editUserInfo(data)
     .then((res) => {
       profileInfo.setUserInfo(res);
       popupEdit.close();
     })
     .catch((err) => {
-      alert('ERROR')
       console.log(`Ошибка: ${err}`);
     })
     .finally(() => {

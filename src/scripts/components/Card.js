@@ -93,5 +93,6 @@ export default class Card {
 
     removeCard() {
       this._element.remove();
+      this._element = null;
     }
 }

@@ -8,7 +8,7 @@
     margin-bottom: 67px;
 }
 
-@media (min-width: 650px) and (max-width: 980px) {
+ @media (min-width: 650px) and (max-width: 980px) {
     .photo-grid {
         max-width: calc(100% - 38px);
         grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
