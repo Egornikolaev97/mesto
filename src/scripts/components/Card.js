@@ -23,11 +23,10 @@ export default class Card {
         return cardElement;
     }
 
+
     isLiked() {
       return this._likes.some(item => item._id === this._userId);
     }
-
-
 
     _enableLike() {
       this._element.querySelector('.photo-grid__like').classList.add('photo-grid__like-active');
@@ -37,8 +36,8 @@ export default class Card {
       this._element.querySelector('.photo-grid__like').classList.remove('photo-grid__like-active');
     }
 
-    setLikes(newLike) {
-      this._likes = newLike;
+    setLikes(setNewLike) {
+      this._likes = setNewLike;
       this._likesCounter.textContent = this._likes.length;
 
 
@@ -56,7 +55,7 @@ export default class Card {
     generateCard() {
         this._element = this._getTemplate();
 
-        this._buttonDelete = this._element.querySelector('.photo-grid__delete');
+        this._buttonCardDelete = this._element.querySelector('.photo-grid__delete');
         this._buttonShowImage = this._element.querySelector('.photo-grid__show-btn');
         this._buttonLike = this._element.querySelector('.photo-grid__like');
         this._likesCounter = this._element.querySelector('.photo-grid__like-counter');
@@ -69,6 +68,10 @@ export default class Card {
         cardImage.src = this._link;
         cardImage.alt = this._name;
 
+        if(this._ownerId !== this._userId) {
+          this._buttonCardDelete.remove();
+        }
+
 
         this.setLikes(this._likes);
         this._setEventListeners();
@@ -78,18 +81,17 @@ export default class Card {
 
     _setEventListeners() {
         this._buttonLike.addEventListener('click', () => {
-          this._handleLikeClick(this._id)
+          this._handleLikeClick(this._id);
         })
-        this._buttonDelete.addEventListener('click', () => {
-            this._handleCardDelete();
+        this._buttonCardDelete.addEventListener('click', () => {
+            this._handleDeleteClick(this._id);
         });
         this._buttonShowImage.addEventListener('click', () => {
             this._handleCardClick();
         });
     }
 
-    _handleCardDelete() {
-        this._element.remove();
-        this._element = null;
+    removeCard() {
+      this._element.remove();
     }
 }

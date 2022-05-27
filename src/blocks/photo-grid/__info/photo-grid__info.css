@@ -4,7 +4,8 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     display: flex;
-    padding: 25px 20px 25px 21px;
+    padding: 20px 0 20px 0;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
