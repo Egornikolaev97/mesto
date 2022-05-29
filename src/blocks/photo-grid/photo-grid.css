@@ -18,7 +18,10 @@
 
 @media (min-width: 320px) and (max-width: 650px) {
     .photo-grid {
-        grid-template-columns: minmax(282px, 100%);
+        grid-template-columns: minmax(282px, 1fr);
         margin: 0 19px 40px;
     }
 }
+
+
+

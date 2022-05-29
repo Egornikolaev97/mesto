@@ -1,11 +1,10 @@
 .photo-grid__info {
     background-color: #fff;
     color: black;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 0 0 10px 10px;
     display: flex;
-    padding: 20px 0 20px 0;
-    align-items: center;
+    padding: 20px 20px 20px 20px;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
 }
+

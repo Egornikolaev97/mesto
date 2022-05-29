@@ -1,8 +1,10 @@
-.popup__show-btn {
-    border: 0;
+.photo-grid__show-btn {
+    border: none;
     width: 100%;
     background-color: transparent;
+
     margin: 0;
     padding: 0;
+
     cursor: pointer;
 }

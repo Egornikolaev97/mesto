@@ -1,4 +1,4 @@
-.photo-grid__title {
+/* .photo-grid__title {
     margin: 0;
     margin-right: 21px;
     padding: 0;
@@ -10,7 +10,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 200px;
-    padding-left: 20px;
+    margin-left: 20px;
 }
 
 @media (min-width: 650px) and (max-width: 980px) {
@@ -23,4 +23,16 @@
     .photo-grid__title {
         width: 400px;
     }
-}
+} */
+
+.photo-grid__title {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000;
+    line-height: calc(29 / 24);
+    font-size: 24px;
+    font-weight: 900;
+  }

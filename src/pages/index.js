@@ -48,7 +48,6 @@ const profileInfo = new UserInfo({
   avatarSelector: '.profile__avatar',
 });
 
-
 //rendering cards
 const renderCard = (data) => {
   const card = new Card({
